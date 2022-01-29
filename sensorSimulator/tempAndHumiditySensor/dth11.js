@@ -1,6 +1,7 @@
 // Importing libaries
 var mqtt = require('mqtt')
 const express = require('express')
+require('dotenv').config()
 
 // Creating a server to simulate our sensor device
 var app = express()
@@ -17,23 +18,18 @@ var isActive = true
 
 // Define the MQTT client configuration (Assignment 4)
 var options = {
-  host: 'c137467ec1c64631a87a3bb45d1ade42.s1.eu.hivemq.cloud',
-  port: 8883,
+  host: process.env.MQTT_HOST,
+  port: process.env.MQTT_PORT,
   protocol: 'mqtts',
-  username: 'bhaskar',
-  password: 'Test@123',
+  username: process.env.MQTT_USERNAME,
+  password: process.env.MQTT_PASSWORD,
 }
 
 //initialize the MQTT client (Assignment 4)
 var client = mqtt.connect(options)
 
-//setup the callbacks (Assignment 4)
 client.on('connect', function () {
   console.log('Connected')
-})
-
-client.on('error', function (error) {
-  console.log(error)
 })
 
 // Created API for starting the device simulation

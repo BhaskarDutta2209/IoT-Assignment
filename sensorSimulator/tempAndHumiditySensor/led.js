@@ -6,13 +6,13 @@ var ledStatus = false
 
 // Crated API to turn on the LED
 app.post("/turnon", function() {
-    console.log("Turning on the lighs")
+    console.log("Turning on the lights")
     ledStatus = true
 })
 
-// Created AOU to turn off the LED
+// Created API to turn off the LED
 app.post("/turnoff", function() {
-    console.log("Turning off the lighs")
+    console.log("Turning off the lights")
     ledStatus = false
 })
 

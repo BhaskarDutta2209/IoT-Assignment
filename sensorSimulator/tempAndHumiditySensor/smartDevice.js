@@ -1,7 +1,7 @@
 var mqtt = require('mqtt')
 const express = require('express')
 const fetch = require('node-fetch')
-// import {fetch} from 'node-fetch'
+require('dotenv').config()
 
 var app = express()
 var PORT = 6000
@@ -12,11 +12,11 @@ var sensorData = {
 }
 
 var options = {
-  host: 'c137467ec1c64631a87a3bb45d1ade42.s1.eu.hivemq.cloud',
-  port: 8883,
+  host: process.env.MQTT_HOST,
+  port: process.env.MQTT_PORT,
   protocol: 'mqtts',
-  username: 'bhaskar',
-  password: 'Test@123',
+  username: process.env.MQTT_USERNAME,
+  password: process.env.MQTT_PASSWORD,
 }
 
 //initialize the MQTT client
